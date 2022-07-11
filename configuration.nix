@@ -242,17 +242,8 @@ in
   programs.neovim = {
     enable = true;
     viAlias = true;
-    #configure = {
-    #  customRC = builtins.readFile ./init.vim;
-    #  vam.knownPlugins = pkgs.vimPlugins;
-    #  vam.pluginDictionaries = let 
-    #    names = [
-    #      "fzf-vim"
-    #      "fzfWrapper"
-    #    ];
-    #   in map (name: { inherit name; }) names;
-    #};
   };
+
 
   virtualisation.docker.enable = true;
   #virtualisation.virtualbox.host.enable = true;

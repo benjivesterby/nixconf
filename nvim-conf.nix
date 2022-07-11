@@ -9,8 +9,15 @@ in
 
   vimdiffAlias = true;
   withNodeJs = false;
-  withPython3 = false;
+  withPython3 = true;
+  extraPython3Packages = (ps: with ps; [
+    pynvim
+    unidecode
+    black
+    isort
+  ]);
   withRuby = false;
+
 
   extraPackages = with pkgs; [
     fd # used by fzf
