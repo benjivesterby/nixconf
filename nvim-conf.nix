@@ -37,7 +37,6 @@ in
         let NERDTreeShowHidden=1
       '';
     }
-
     {
       plugin = lualine-nvim;
       config = ''
@@ -46,7 +45,24 @@ in
         EOF
       '';
     }
-
+    {
+      plugin = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        pname = "coc";
+        version = "release";
+        src = pkgs.fetchFromGitHub {
+          owner = "neoclide";
+          repo = "coc.nvim";
+          rev = "release";
+          sha256 = "bsrCvgQqIA4jD62PIcLwYdcBM+YLLKLI/x2H5c/bR50=";
+        };
+        meta.homepage = "https://github.com/neoclide/coc.nvim";
+      };
+      config = "lua << EOF\n"
+      + builtins.readFile "${root}/nvim/config/treesitter.lua"
+      + "\nEOF";
+    }
+    vim-go
+#    github/copilot.vim
     fugitive
     vim-sensible
     vim-surround
