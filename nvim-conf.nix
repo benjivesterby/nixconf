@@ -64,9 +64,25 @@ in
         };
         meta.homepage = "https://github.com/neoclide/coc.nvim";
       };
-      config = "lua << EOF\n"
-      + builtins.readFile "${root}/nvim/config/treesitter.lua"
-      + "\nEOF";
+      config = ''
+        let g:coc_global_extensions = [
+        	\ 'coc-css',
+        	\ 'coc-git',
+        	\ 'coc-html',
+        	\ 'coc-json',
+        	\ 'coc-markdownlint',
+        	\ 'coc-actions',
+        	\ 'coc-snippets',
+        	\ 'coc-spell-checker',
+        	\ 'coc-stylelint',
+        	\ 'coc-tag',
+        	\ 'coc-tabnine',
+        	\ 'coc-todolist',
+        	\ 'coc-tsserver',
+        	\ 'coc-yaml',
+        	\ 'coc-yank'
+        \ ]
+      '';
     }
     vim-go
 #    github/copilot.vim

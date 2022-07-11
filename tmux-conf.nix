@@ -53,7 +53,7 @@
     }
   ];
   extraConfig = ''
-    #### BENJI
+    tmux_conf_copy_to_os_clipboard=true
 
     new-session -n $HOST
     # removing tmux delay
@@ -66,9 +66,19 @@
     setw -g pane-base-index 1
     
     # setup binding for reloading the tmux config
-    bind r source-file ~/.tmux.conf |; display "Reloaded!"
+    # bind r source-file ~/.tmux.conf |; display "Reloaded!"
     
-    # Benji Settings
+    #-------------------------------------------------------#
+    #Pane copy/pasting
+    #-------------------------------------------------------#
+    unbind [
+    bind Escape copy-mode
+    unbind p
+    bind p paste-buffer
+    bind -Tcopy-mode-vi v send -X begin-selection
+    bind -Tcopy-mode-vi y send -X copy-selection
+    #-------------------------------------------------------#
+
     
     # setup prefix forwarding for other applications so that tmux doesn't just capture it and
     # do nothing with it
