@@ -4,6 +4,10 @@
 
 { config, pkgs, ... }:
 
+let
+
+  contrast-detect-secrets = pkgs.python3Packages.callPackage ./detect-secrets.nix { };
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -96,7 +100,6 @@
       firefox
       plasma5Packages.plasma-thunderbolt
       slack
-      libpcap
     #  thunderbird
     ];
   };
@@ -173,6 +176,13 @@
     exa # ls alternative
     glances # top alternative
     hyperfine # benchmarking
+    lua5_3
+    direnv
+    modd
+    automake
+    autoconf
+    libwebp
+    niv
 
     # Editors
     neovim
@@ -184,10 +194,13 @@
     docker-compose
     containerd
 
+    # Libs
+    libcap
+    libpcap
+
     # Packet Capture
     wireshark
     tcpdump
-    libpcap
 
     # Linting
     shellcheck
@@ -206,8 +219,8 @@
     nodejs
 
 
-    libcap
     go_1_18
+    contrast-detect-secrets
   ];
 
   services.pcscd.enable = true;
