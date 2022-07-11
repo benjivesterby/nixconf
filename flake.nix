@@ -14,11 +14,12 @@
     user = "benji";
     system = "x86_64-linux";
     pkgs = import nixpkgs {
-    	inherit system;
+      inherit system;
       config.allowUnfree = true;
     };
 
     lib = nixpkgs.lib;
+    contrast-detect-secrets = pkgs.python3Packages.callPackage ./detect-secrets.nix { };
   in {
 
       nixosConfigurations = {
@@ -32,7 +33,6 @@
 	      home-manager.users.${user} = {
 	        imports = [ 
 		  ./home.nix
-		  ./detect-secrets.nix
 		];
 	      };
 	    }
