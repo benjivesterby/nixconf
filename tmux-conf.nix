@@ -53,6 +53,55 @@
     }
   ];
   extraConfig = ''
+    #### BENJI
+
+    new-session -n $HOST
+    # removing tmux delay
+    set -sg escape-time 1
+    
+    # set the base index to start at 1 instead of 0
+    set -g base-index 1
+    
+    # set the panes to be base 1 indexed as well
+    setw -g pane-base-index 1
+    
+    # setup binding for reloading the tmux config
+    bind r source-file ~/.tmux.conf |; display "Reloaded!"
+    
+    # Benji Settings
+    
+    # setup prefix forwarding for other applications so that tmux doesn't just capture it and
+    # do nothing with it
+    bind C-a send-prefix
+    
+    set -g prefix C-a
+    unbind-key C-b
+    bind-key C-a send-prefix
+    
+    setw -g mode-keys vi
+    
+    # change the key combinations for vertical (|) and horizontal (-) splitting to make more sense
+    bind | split-window -h
+    bind - split-window -v
+    
+    # setup moving between panes to use the VIM movement keys
+    bind h select-pane -L
+    bind j select-pane -D
+    bind k select-pane -U
+    bind l select-pane -R
+    
+    # quick window selection
+    bind -r C-h select-window -t :-
+    bind -r C-l select-window -t :+
+    
+    # setup pane resizing shortcuts
+    bind -r H resize-pane -L 5 
+    bind -r J resize-pane -D 5
+    bind -r K resize-pane -U 5
+    bind -r L resize-pane -R 5
+
+    ####
+
     set -g terminal-overrides ",alacritty:RGB"
 
     set -g base-index 1
