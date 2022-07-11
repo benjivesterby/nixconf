@@ -169,6 +169,10 @@
     sqlite                             # sqlite database
     unzip                              # .zip file util
     scrot                              # Screenshot capturing
+    bat # cat alternative
+    exa # ls alternative
+    glances # top alternative
+    hyperfine # benchmarking
 
     # Editors
     neovim
