@@ -84,7 +84,22 @@ in
         \ ]
       '';
     }
-    vim-go
+    {
+      plugin = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        pname = "vim-go";
+        version = "release";
+        src = pkgs.fetchFromGitHub {
+          owner = "fatih";
+          repo = "vim-go";
+          rev = "v1.26";
+          sha256 = "B9527B9MQFDs1kLda9V2PY+6kDhNa7AjpSwiu/j09L4=";
+        };
+        meta.homepage = "https://github.com/fatih/vim-go";
+      };
+      config = ''
+      '';
+    }
+#  vim-go
 #    github/copilot.vim
     fugitive
     vim-sensible
