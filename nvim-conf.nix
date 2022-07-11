@@ -99,8 +99,7 @@ in
       config = ''
       '';
     }
-#  vim-go
-#    github/copilot.vim
+    copilot-vim
     fugitive
     vim-sensible
     vim-surround
