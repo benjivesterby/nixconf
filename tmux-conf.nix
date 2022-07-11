@@ -137,7 +137,7 @@
     bind c new-window -c "#{pane_current_path}"
 
     #### reload config
-    bind r source-file ~/.tmux.conf \; display-message "Config reloaded..."
+    bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded..."
 
     #### mouse mode
     set -g mouse on
