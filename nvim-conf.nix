@@ -96,9 +96,18 @@ in
         meta.homepage = "https://github.com/fatih/vim-go";
       };
       config = ''
+         imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+         imap <M-.> <Plug>(copilot-next)
+         imap <M-,> <Plug>(copilot-previous)
+         let g:copilot_no_tab_map = v:true
+         let g:copilot_assume_mapped = v:true
       '';
     }
-    copilot-vim
+    {
+      plugin = copilot-vim;
+      config = ''
+      '';
+    }
     fugitive
     vim-sensible
     vim-surround
