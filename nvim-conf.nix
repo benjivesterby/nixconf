@@ -97,8 +97,8 @@ in
       };
       config = ''
          imap <silent><script><expr> <c-space> copilot#Accept('\<CR>')
-         imap <M-.> <Plug>(copilot-next)
-         imap <M-,> <Plug>(copilot-previous)
+         "imap <M-.> <Plug>(copilot-next)
+         "imap <M-,> <Plug>(copilot-previous)
          let g:copilot_no_tab_map = v:true
          let g:copilot_assume_mapped = v:true
       '';
