@@ -1,5 +1,50 @@
 "source ~/.config/nvim/config/quickload.vim
 
+
+" ----- BENJI -----
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Add go bindings 
+nmap <leader><tab> :GoImports<CR>
+nmap <leader>b :GoBuild<CR>
+
+" if hidden is not set, TextEdit might fail.
+set hidden
+" Better display for messages
+set cmdheight=2
+" Smaller updatetime for CursorHold & CursorHoldI
+set updatetime=300
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+" always show signcolumns
+set signcolumn=yes
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" ----- BENJI END -----
+
 augroup highlight_yank
 	autocmd!
 	" type :hi to see other higroup options

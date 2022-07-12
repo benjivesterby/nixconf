@@ -18,7 +18,6 @@ in
   ]);
   withRuby = false;
 
-
   extraPackages = with pkgs; [
     fd # used by fzf
     rnix-lsp
