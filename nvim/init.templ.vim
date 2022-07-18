@@ -47,10 +47,10 @@ set tabstop=4
 
 " line numbers on by default
 set number
-autocmd InsertEnter * silent! :set norelativenumber
-autocmd InsertLeave,BufNewFile,VimEnter * silent! :set relativenumber
-autocmd FocusLost * :set number
-autocmd FocusGained * :set relativenumber
+" autocmd InsertEnter * silent! :set norelativenumber
+" autocmd InsertLeave,BufNewFile,VimEnter * silent! :set relativenumber
+" autocmd FocusLost * :set number
+" autocmd FocusGained * :set relativenumber
 
 " ----- BENJI -----
 "
