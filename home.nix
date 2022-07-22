@@ -32,6 +32,14 @@ in
   # changes in each release.
   home.stateVersion = "22.05";
 
+  home.packages = with pkgs; [
+
+    libpcap
+    libcap
+    gcc
+
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
