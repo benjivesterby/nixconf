@@ -33,7 +33,8 @@ in
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
-
+    keybase
+    zoom-us
     libpcap
     libcap
     gcc
