@@ -34,7 +34,6 @@ in
 
   home.packages = with pkgs; [
     keybase
-    zoom-us
     libpcap
     libcap
     gcc
