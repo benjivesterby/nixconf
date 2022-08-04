@@ -38,33 +38,30 @@ in
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
   hardware.nvidia.modesetting.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   hardware.nvidia.powerManagement.enable = true;
-  services.xserver.screenSection = ''
-    Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
-    Option         "AllowIndirectGLXProtocol" "off"
-    Option         "TripleBuffer" "on"
-  '';
 
-  # Enable the GNOME Desktop Environment.
-  #services.xserver.displayManager.gdm.enable = true;
-  #services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
+  # Enable the X11 windowing system.
   services.xserver = {
+    enable = true;
+    videoDrivers = [ "nvidia" ];
+
+    # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
+    xkbOptions = "ctrl:swapcaps";
     displayManager = {
 	gdm.enable = true;
     };
     desktopManager = {
-	gnome.enable = true;
-	xfce.enable = true;
+	  gnome.enable = true;
+	  xfce.enable = true;
     };
+    screenSection = ''
+      Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
+      Option         "AllowIndirectGLXProtocol" "off"
+      Option         "TripleBuffer" "on"
+    '';
   };
 
   # Enable CUPS to print documents.
