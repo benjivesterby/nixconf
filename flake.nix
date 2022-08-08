@@ -7,6 +7,9 @@
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    darwin = {
+      url = "github:LnL7/nix-darwin";
+    };
   };
 
   outputs = { self, nixpkgs, darwin, home-manager }:
@@ -40,20 +43,22 @@
         };
       };
 
-      darwinConfigurations."Centurion" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        modules = [ 
-	  ./darwin-configuration.nix
-          home-manager.darwinModule.home-manager {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users.${user} = {
-	      imports = [ 
-	        ./home.nix
-	      ];
-	    };
-	  }
-	];
+      darwinConfigurations = {
+        Centurion = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [ 
+            ./darwin-configuration.nix
+            home-manager.darwinModule.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${user} = {
+                imports = [ 
+                  ./home.nix
+                ];
+              };
+            }
+          ];
+        };
       };
   };
 }
