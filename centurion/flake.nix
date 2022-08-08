@@ -28,8 +28,8 @@
     contrast-detect-secrets = pkgs.python3Packages.callPackage ../detect-secrets.nix { };
   in {
 
-      darwinConfigurations."Centurion" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
+      darwinConfigurations = {
+        Centurion = darwin.lib.darwinSystem {
           modules = [ 
             ./configuration.nix
             home-manager.darwinModule.home-manager {
@@ -42,6 +42,7 @@
               };
             }
           ];
+        };
       };
   };
 }
