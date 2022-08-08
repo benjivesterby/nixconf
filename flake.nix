@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }:
+  outputs = { self, nixpkgs, darwin, home-manager }:
   let
     user = "benji";
     system = "x86_64-linux";
@@ -38,6 +38,22 @@
 	    }
 	  ];
         };
+      };
+
+      darwinConfigurations."Centurion" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [ 
+	  ./darwin-configuration.nix
+          home-manager.darwinModule.home-manager {
+	    home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+	    home-manager.users.${user} = {
+	      imports = [ 
+	        ./home.nix
+	      ];
+	    };
+	  }
+	];
       };
   };
 }
