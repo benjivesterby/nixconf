@@ -3,17 +3,17 @@
 
   inputs = {
     # All packages should follow latest nixpkgs/nur
-    nixpkgs.url = "github:nixos/nixpkgs/master";
+    unstable.url = "github:nixos/nixpkgs/master";
     nur.url = "github:nix-community/NUR";
     # Nix-Darwin
     darwin = {
       url = "github:LnL7/nix-darwin";
-      #inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "unstable";
     };
     # HM-manager for dotfile/user management
     home-manager = {
       url = "github:nix-community/home-manager";
-      #inputs.nixpkgs.follows = "unstable";
+      inputs.nixpkgs.follows = "unstable";
     };
   };
 
@@ -28,8 +28,7 @@
     contrast-detect-secrets = pkgs.python3Packages.callPackage ../detect-secrets.nix { };
   in {
 
-      darwinConfigurations = {
-        Centurion = darwin.lib.darwinSystem {
+      darwinConfigurations."Centurion" = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [ 
             ./configuration.nix
@@ -43,7 +42,6 @@
               };
             }
           ];
-        };
       };
   };
 }

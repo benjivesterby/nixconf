@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  contrast-detect-secrets = pkgs.python3Packages.callPackage ./detect-secrets.nix { };
+  contrast-detect-secrets = pkgs.python3Packages.callPackage ../detect-secrets.nix { };
 in
 {
   # List packages installed in system profile. To search by name, run:
