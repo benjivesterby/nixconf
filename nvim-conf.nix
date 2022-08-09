@@ -1,10 +1,11 @@
 { pkgs }:
 
 let
-  root=/home/benji/src/benji/nixos;
+  root=/Users/benji/.config/nixpkgs;
 in
 {
   enable = true;
+  viAlias = true;
   package = pkgs.neovim-unwrapped;
 
   vimdiffAlias = true;

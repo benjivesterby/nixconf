@@ -20,7 +20,7 @@ in
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "benji";
-  home.homeDirectory = "/home/benji";
+  home.homeDirectory = "/Users/benji";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -33,11 +33,44 @@ in
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
-    keybase
-    libpcap
-    libcap
-    gcc
-    postman
+    # Terminals
+    alacritty
+    kitty
+
+    # Utilities
+    git
+    curl
+    jq
+    ripgrep
+    python3
+    python3.pkgs.pip
+    gnupg
+    pinentry-curses
+    tmux
+    tree
+    nmap
+    xclip
+    htop                               # System monitor
+    ffmpeg
+    mplayer                            # Video player
+    imagemagick                        # Image manip library
+    arandr                             # GUI frontend for xrandr monitor configuration
+    rustc                              # Rust programming language
+    bc                                 # Basic calculator
+    irssi                              # Irc client
+    sqlite                             # sqlite database
+    unzip                              # .zip file util
+    bat # cat alternative
+    exa # ls alternative
+    glances # top alternative
+    hyperfine # benchmarking
+    lua5_3
+    direnv
+    libwebp
+    niv
+
+    ## Editors
+    #neovim
   ];
 
   # Let Home Manager install and manage itself.
@@ -47,6 +80,7 @@ in
   programs.starship = import ./starship-conf.nix { inherit pkgs lib; };
   programs.tmux = import ./tmux-conf.nix { inherit pkgs; };
   programs.zsh = import ./zsh-conf.nix { inherit pkgs; };
+
 
   programs.fzf = {
     enable = true;
