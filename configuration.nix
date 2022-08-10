@@ -49,7 +49,8 @@ in
     # Configure keymap in X11
     layout = "us";
     xkbVariant = "";
-    xkbOptions = "ctrl:swapcaps";
+    #xkbOptions = "ctrl:swapcaps"; # enable only when using direct keyboard
+    xkbOptions ="ctrl:nocaps, shift:both_capslock";
     displayManager = {
 	gdm.enable = true;
     };
