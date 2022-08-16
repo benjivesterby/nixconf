@@ -69,6 +69,8 @@ in
     libwebp
     niv
 
+    hugo
+    pre-commit
     ## Editors
     #neovim
   ];
