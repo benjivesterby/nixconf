@@ -3,18 +3,27 @@
 let
   # set channel channel to nixpkgs-unstable
  # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- # pkgs = import <nixpkgs> {
- #   overlays = [
- #     # https://github.com/NixOS/nixpkgs/issues/168984
- #     (self: super: {
- #       golangci-lint = super.golangci-lint.override {
- #         buildGoModule = super.buildGoModule;
- #       };
- #     })
- #   ];
- # };
+ pkgs = import <nixpkgs> {
+   config.allowUnfree = true;
+  # overlays = [
+  #   # https://github.com/NixOS/nixpkgs/issues/168984
+  #   (self: super: {
+  #     golangci-lint = super.buildGoPackage.override {go = pkgs.go_1_18; }{
+  #       #buildGoModule = super.buildGoModule;
+  #       name="golangci-lint";
+  #       goPackagePath = "github.com/golangci/golangci-lint";
+  #       src = super.fetchFromGitHub {
+  #         owner="golangci"; 
+  #         repo="golangci-lint"; 
+  #         rev="master"; 
+  #         sha256 = "sha256-yiouzerUFkNkSwndiRXK9RMTE9hAQw7fCwJvy7U+P/s=";
+  #       };
+  #     };
+  #   })
+  # ];
+ };
   contrast-detect-secrets = pkgs.python3Packages.callPackage ./detect-secrets.nix { };
-  # https://github.com/nix-community/neovim-nightly-overlay
+ # https://github.com/nix-community/neovim-nightly-overlay
 in
 {
   # Home Manager needs a bit of information about you and the
@@ -38,6 +47,10 @@ in
     libcap
     gcc
     postman
+    go_1_18
+    golangci-lint
+    drawio
+    openssl
   ];
 
   # Let Home Manager install and manage itself.
