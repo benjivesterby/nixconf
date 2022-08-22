@@ -217,7 +217,6 @@ in
     nodejs
 
 
-    go_1_18
     contrast-detect-secrets
   ];
 

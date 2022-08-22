@@ -3,7 +3,7 @@
 let
   # set channel channel to nixpkgs-unstable
  # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- pkgs = import <nixpkgs> {
+ pkgs = import <nixos-unstable> {
    config.allowUnfree = true;
   # overlays = [
   #   # https://github.com/NixOS/nixpkgs/issues/168984
@@ -47,7 +47,6 @@ in
     libcap
     gcc
     postman
-    go_1_18
     golangci-lint
     drawio
     openssl
@@ -74,7 +73,7 @@ in
 
   programs.go = {
     enable = true;
-    package = pkgs.go_1_18;
+    package = pkgs.go_1_19;
     goPath = "${builtins.getEnv "HOME"}/gopath";
     goBin = "${builtins.getEnv "HOME"}/gobin";
   };
