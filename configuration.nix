@@ -5,8 +5,9 @@
 { config, pkgs, ... }:
 
 let
-
-  contrast-detect-secrets = pkgs.python3Packages.callPackage ./detect-secrets.nix { };
+  pkgs = import <nixos-unstable> {
+    config.allowUnfree = true;
+  };
 in
 {
   imports =
@@ -134,90 +135,12 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Terminals
-    alacritty
-    kitty
-
     # Utilities
     bash
     git
     wget
     curl
-    jq
-    dig
-    ripgrep
-    python3
-    python3.pkgs.pip
-    nettools
-    gnupg
-    pinentry-curses
-    tmux
-    cryptsetup
     gcc 
-    tree
-    kazam
-    nmap
-    xclip
-    llvm
-    htop                               # System monitor
-    ffmpeg
-    mplayer                            # Video player
-    imagemagick                        # Image manip library
-    arandr                             # GUI frontend for xrandr monitor configuration
-    rustc                              # Rust programming language
-    bc                                 # Basic calculator
-    irssi                              # Irc client
-    sqlite                             # sqlite database
-    unzip                              # .zip file util
-    scrot                              # Screenshot capturing
-    bat # cat alternative
-    exa # ls alternative
-    glances # top alternative
-    hyperfine # benchmarking
-    lua5_3
-    direnv
-    modd
-    automake
-    autoconf
-    libwebp
-    niv
-
-    # Editors
-    neovim
-    fzf
-    goreleaser
-
-    # Docker
-    docker
-    docker-compose
-    containerd
-
-    # Libs
-    libcap
-    libpcap
-
-    # Packet Capture
-    wireshark
-    tcpdump
-
-    # Linting
-    shellcheck
-    pre-commit
-    golangci-lint
-
-    # Other
-    terraform
-    graphviz
-    wireguard-tools
-    signal-desktop
-    signal-cli
-    hugo
-    keybase
-    steam                              # Games
-    nodejs
-
-
-    contrast-detect-secrets
   ];
 
   services.pcscd.enable = true;

@@ -13,7 +13,7 @@
   let
     user = "benji";
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
+    pkgs = import <nixos-unstable> {
       inherit system;
       config.allowUnfree = true;
     };

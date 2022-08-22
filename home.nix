@@ -42,6 +42,83 @@ in
   home.stateVersion = "22.05";
 
   home.packages = with pkgs; [
+    # Terminals
+    alacritty
+    kitty
+    dig
+    ripgrep
+    python3
+    python3.pkgs.pip
+    jq
+    nettools
+    gnupg
+    pinentry-curses
+    tmux
+    cryptsetup
+    tree
+    kazam
+    nmap
+    xclip
+    llvm
+    htop                               # System monitor
+    ffmpeg
+    mplayer                            # Video player
+    imagemagick                        # Image manip library
+    arandr                             # GUI frontend for xrandr monitor configuration
+    rustc                              # Rust programming language
+    bc                                 # Basic calculator
+    irssi                              # Irc client
+    sqlite                             # sqlite database
+    unzip                              # .zip file util
+    scrot                              # Screenshot capturing
+    bat # cat alternative
+    exa # ls alternative
+    glances # top alternative
+    hyperfine # benchmarking
+    lua5_3
+    direnv
+    modd
+    automake
+    autoconf
+    libwebp
+    niv
+
+    # Editors
+    goreleaser
+
+    # Docker
+    docker
+    docker-compose
+    containerd
+
+    # Libs
+    libcap
+    libpcap
+
+    # Packet Capture
+    wireshark
+    tcpdump
+
+    # Linting
+    shellcheck
+    pre-commit
+    golangci-lint
+
+    # Other
+    terraform
+    graphviz
+    wireguard-tools
+    signal-desktop
+    signal-cli
+    hugo
+    keybase
+    steam                              # Games
+    nodejs
+
+
+    go_1_19
+    contrast-detect-secrets
+
     keybase
     libpcap
     libcap
