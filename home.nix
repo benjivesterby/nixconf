@@ -113,8 +113,7 @@ in
     hugo
     keybase
     steam                              # Games
-    nodejs
-
+    nodejs-16_x
 
     go_1_19
     contrast-detect-secrets
