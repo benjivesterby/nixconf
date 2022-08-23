@@ -85,6 +85,18 @@ in
     }
     {
       plugin = pkgs.vimUtils.buildVimPluginFrom2Nix {
+        pname = "copilot-vim";
+        version = "release";
+        src = pkgs.fetchFromGitHub {
+          owner = "github";
+          repo = "copilot.vim";
+          rev = "release";
+          sha256 = "zX7it18StK1fVnaRPawQT05YgCFbAt6kqcxgcNCd7Kk=";
+          };
+       };
+    }
+    {
+      plugin = pkgs.vimUtils.buildVimPluginFrom2Nix {
         pname = "vim-go";
         version = "release";
         src = pkgs.fetchFromGitHub {
@@ -102,11 +114,6 @@ in
          imap <M-,> <Plug>(copilot-previous)
          let g:copilot_no_tab_map = v:true
          let g:copilot_assume_mapped = v:true
-      '';
-    }
-    {
-      plugin = copilot-vim;
-      config = ''
       '';
     }
     fugitive
