@@ -126,6 +126,11 @@ in
     golangci-lint
     drawio
     openssl
+
+    # libpcap requirements
+    flex
+    bison
+    discord
   ];
 
   # Let Home Manager install and manage itself.
