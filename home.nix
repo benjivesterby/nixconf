@@ -3,7 +3,11 @@
 let
   # set channel channel to nixpkgs-unstable
  # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
- pkgs = import <nixos-unstable> {
+ pkgs= import <nixpkgs> {
+   config.allowUnfree = true;
+ };
+
+ unstable = import <nixos-unstable> {
    config.allowUnfree = true;
   # overlays = [
   #   # https://github.com/NixOS/nixpkgs/issues/168984
@@ -41,96 +45,101 @@ in
   # changes in each release.
   home.stateVersion = "22.05";
 
-  home.packages = with pkgs; [
+  home.packages = [
+    # Stable
+    pkgs.tmux
+
     # Terminals
-    alacritty
-    kitty
-    dig
-    ripgrep
-    python3
-    python3.pkgs.pip
-    jq
-    nettools
-    gnupg
-    pinentry-curses
-    tmux
-    cryptsetup
-    tree
-    kazam
-    nmap
-    xclip
-    llvm
-    htop                               # System monitor
-    ffmpeg
-    mplayer                            # Video player
-    imagemagick                        # Image manip library
-    arandr                             # GUI frontend for xrandr monitor configuration
-    rustc                              # Rust programming language
-    bc                                 # Basic calculator
-    irssi                              # Irc client
-    sqlite                             # sqlite database
-    unzip                              # .zip file util
-    scrot                              # Screenshot capturing
-    bat # cat alternative
-    exa # ls alternative
-    glances # top alternative
-    hyperfine # benchmarking
-    lua5_3
-    direnv
-    modd
-    automake
-    autoconf
-    libwebp
-    niv
+    pkgs.alacritty
+    pkgs.kitty
+    pkgs.dig
+    pkgs.ripgrep
+    pkgs.python3
+    pkgs.python3.pkgs.pip
+    pkgs.jq
+    pkgs.nettools
+    pkgs.gnupg
+    pkgs.pinentry-curses
+    pkgs.cryptsetup
+    pkgs.tree
+    pkgs.kazam
+    pkgs.nmap
+    pkgs.xclip
+    pkgs.llvm
+    pkgs.htop                               # System monitor
+    pkgs.ffmpeg
+    pkgs.mplayer                            # Video player
+    pkgs.imagemagick                        # Image manip library
+    pkgs.arandr                             # GUI frontend for xrandr monitor configuration
+    pkgs.rustc                              # Rust programming language
+    pkgs.bc                                 # Basic calculator
+    pkgs.irssi                              # Irc client
+    pkgs.sqlite                             # sqlite database
+    pkgs.unzip                              # .zip file util
+    pkgs.scrot                              # Screenshot capturing
+    pkgs.bat # cat alternative
+    pkgs.exa # ls alternative
+    pkgs.glances # top alternative
+    pkgs.hyperfine # benchmarking
+    pkgs.lua5_3
+    pkgs.direnv
+    pkgs.modd
+    pkgs.automake
+    pkgs.autoconf
+    pkgs.libwebp
+    pkgs.niv
 
     # Editors
-    goreleaser
+    pkgs.goreleaser
 
     # Docker
-    docker
-    docker-compose
-    containerd
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.containerd
 
     # Libs
-    libcap
-    libpcap
+    pkgs.libcap
+    pkgs.libpcap
 
-    # Packet Capture
-    wireshark
-    tcpdump
+    pkgs.# Packet Capture
+    pkgs.wireshark
+    pkgs.tcpdump
 
     # Linting
-    shellcheck
-    pre-commit
-    golangci-lint
+    pkgs.shellcheck
+    pkgs.pre-commit
+    pkgs.golangci-lint
 
     # Other
-    terraform
-    graphviz
-    wireguard-tools
-    signal-desktop
-    signal-cli
-    hugo
-    keybase
-    steam                              # Games
-    nodejs-16_x
+    pkgs.terraform
+    pkgs.graphviz
+    pkgs.wireguard-tools
+    pkgs.signal-desktop
+    pkgs.signal-cli
+    pkgs.hugo
+    pkgs.keybase
+    pkgs.steam                              # Games
+    pkgs.nodejs-16_x
 
-    go_1_19
+    unstable.go_1_19
     contrast-detect-secrets
 
-    keybase
-    libpcap
-    libcap
-    gcc
-    postman
-    golangci-lint
-    drawio
-    openssl
+    pkgs.keybase
+    pkgs.libpcap
+    pkgs.libcap
+    pkgs.gcc
+    pkgs.postman
+    pkgs.golangci-lint
+    pkgs.drawio
+    pkgs.openssl
 
     # libpcap requirements
-    flex
-    bison
-    discord
+    pkgs.flex
+    pkgs.bison
+    pkgs.discord
+    pkgs.burpsuite
+    pkgs.google-chrome
+    pkgs.vscode
   ];
 
   # Let Home Manager install and manage itself.
@@ -154,7 +163,7 @@ in
 
   programs.go = {
     enable = true;
-    package = pkgs.go_1_19;
+    package = unstable.go_1_19;
     goPath = "${builtins.getEnv "HOME"}/gopath";
     goBin = "${builtins.getEnv "HOME"}/gobin";
   };

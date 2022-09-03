@@ -91,7 +91,7 @@ in
           owner = "github";
           repo = "copilot.vim";
           rev = "release";
-          sha256 = "zX7it18StK1fVnaRPawQT05YgCFbAt6kqcxgcNCd7Kk=";
+          sha256 = "sha256-hm/8q08aIVWc5thh31OVpVoksVrqKD+rSHbUTxzzHaU=";
           };
        };
     }

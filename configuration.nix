@@ -141,6 +141,8 @@ in
     wget
     curl
     gcc 
+
+    kitty
   ];
 
   services.pcscd.enable = true;
