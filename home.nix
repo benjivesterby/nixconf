@@ -140,6 +140,8 @@ in
     pkgs.burpsuite
     pkgs.google-chrome
     pkgs.vscode
+    pkgs.gimp
+    pkgs.inkscape
   ];
 
   # Let Home Manager install and manage itself.
