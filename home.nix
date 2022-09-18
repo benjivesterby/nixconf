@@ -142,6 +142,7 @@ in
     pkgs.vscode
     pkgs.gimp
     pkgs.inkscape
+    pkgs.atuin
   ];
 
   # Let Home Manager install and manage itself.
