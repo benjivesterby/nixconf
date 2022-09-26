@@ -144,6 +144,8 @@ in
     pkgs.inkscape
     pkgs.atuin
   ];
+  
+  gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

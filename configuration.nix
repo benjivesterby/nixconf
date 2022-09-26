@@ -179,6 +179,16 @@ in
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+  environment.sessionVariables = {
+      XCURSOR_PATH = [
+        "${config.system.path}/share/icons"
+        "$HOME/.icons"
+        "$HOME/.nix-profile/share/icons/"
+      ];
+      GTK_DATA_PREFIX = [
+        "${config.system.path}"
+      ];
+  };
 
   users.defaultUserShell = pkgs.zsh;
 
