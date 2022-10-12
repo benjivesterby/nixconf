@@ -70,6 +70,7 @@ in
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.logind.lidSwitchExternalPower = "ignore";
 
   # Enable sound with pipewire.
   sound.enable = true;
