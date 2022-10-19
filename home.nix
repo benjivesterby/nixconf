@@ -143,6 +143,10 @@ in
     pkgs.gimp
     pkgs.inkscape
     pkgs.atuin
+
+    pkgs.bitwarden
+    pkgs.bitwarden-cli
+    unstable.zoom-us
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;

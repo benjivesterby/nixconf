@@ -77,7 +77,6 @@ in
         	\ 'coc-tag',
         	\ 'coc-tabnine',
         	\ 'coc-todolist',
-        	\ 'coc-tsserver',
         	\ 'coc-yaml',
         	\ 'coc-yank'
         \ ]

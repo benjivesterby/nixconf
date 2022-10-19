@@ -63,10 +63,12 @@ in
     #xkbOptions = "ctrl:swapcaps"; # enable only when using direct keyboard
     xkbOptions ="ctrl:nocaps, shift:both_capslock";
     displayManager = {
-	gdm.enable = true;
+	  gdm.enable = true;
+      gdm.wayland = false;
     };
     desktopManager = {
 	  gnome.enable = true;
+      xfce.enable = true;
     };
     screenSection = ''
       Option         "metamodes" "nvidia-auto-select +0+0 {ForceFullCompositionPipeline=On}"
