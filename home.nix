@@ -147,6 +147,7 @@ in
     pkgs.bitwarden
     pkgs.bitwarden-cli
     unstable.zoom-us
+    pkgs.insomnia
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;

@@ -113,6 +113,7 @@ in
       firefox
       plasma5Packages.plasma-thunderbolt
       slack
+      wireshark
     ];
   };
 
@@ -130,6 +131,8 @@ in
     gcc
 
     kitty
+    tailscale
+    libpcap
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -152,8 +155,8 @@ in
   users.defaultUserShell = pkgs.zsh;
 
   virtualisation.docker.enable = true;
-  #virtualisation.virtualbox.host.enable = true;
-  #virtualisation.virtualbox.host.enableExtensionPack = true;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.enableExtensionPack = true;
   users.extraGroups.vboxusers.members = [ "benji" ];
 
   programs.zsh = {
@@ -181,6 +184,12 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Enable Tailscale
+  services.tailscale.enable = true;
+
+  # Enable the tailscale port
+  networking.firewall.allowedUDPPorts = [ 41641 ];
+  networking.firewall.checkReversePath = "loose";
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
