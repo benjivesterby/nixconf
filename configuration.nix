@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, ... }:
 
 let
-  pkgs= import <nixpkgs> {
-    config.allowUnfree = true;
-  };
+  #pkgs= import <nixpkgs> {
+  #  config.allowUnfree = true;
+  #};
 
-  unstable= import <nixos-unstable> {
+  pkgs = import <nixos-unstable> {
     config.allowUnfree = true;
   };
 in
@@ -54,7 +54,7 @@ in
   hardware.nvidia.powerManagement.enable = true;
   hardware.opengl.enable = true;
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  boot.kernelPackages = unstable.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Configure keymap in X11
   services.xserver = {
@@ -126,17 +126,17 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     # Utilities
-    pkgs.bash
-    pkgs.git
-    pkgs.wget
-    pkgs.curl
-    pkgs.gcc
+    bash
+    git
+    wget
+    curl
+    gcc
 
-    pkgs.kitty
-    unstable.tailscale
-    pkgs.libpcap
+    kitty
+    libpcap
+    tailscale
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
