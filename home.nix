@@ -149,6 +149,8 @@ in
     unstable.zoom-us
     pkgs.insomnia
     pkgs.vlc
+    pkgs.libdivecomputer
+    pkgs.usbutils
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
