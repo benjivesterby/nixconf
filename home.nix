@@ -149,8 +149,20 @@ in
     unstable.zoom-us
     pkgs.insomnia
     pkgs.vlc
+
     pkgs.libdivecomputer
+    pkgs.subsurface
+    pkgs.socat
+
     pkgs.usbutils
+    pkgs.ansible
+    pkgs.screen
+    #pkgs.inetutils
+
+    # autotools
+    pkgs.automake
+    pkgs.autoconf
+    pkgs.autogen
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
