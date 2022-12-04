@@ -163,6 +163,8 @@ in
     pkgs.automake
     pkgs.autoconf
     pkgs.autogen
+    pkgs.rustc
+    pkgs.cargo
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
