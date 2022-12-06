@@ -7,6 +7,13 @@ let
    config.allowUnfree = true;
  };
 
+ opencv4 = pkgs.opencv.override {
+   enableGtk2 = true;
+   gtk2 = pkgs.gtk2;
+   enableFfmpeg = true; #here is how to add ffmpeg and other compilation flags
+   #ffmpeg_3 = pkgs.ffmpeg_5-full;
+ };
+
  unstable = import <nixos-unstable> {
    config.allowUnfree = true;
   # overlays = [
@@ -67,7 +74,7 @@ in
     pkgs.xclip
     pkgs.llvm
     pkgs.htop                               # System monitor
-    pkgs.ffmpeg
+    #pkgs.ffmpeg
     pkgs.mplayer                            # Video player
     pkgs.imagemagick                        # Image manip library
     pkgs.arandr                             # GUI frontend for xrandr monitor configuration
@@ -165,6 +172,13 @@ in
     pkgs.autogen
     pkgs.rustc
     pkgs.cargo
+    pkgs.pkgconfig
+    pkgs.gnumake
+    opencv4
+    #pkgs.opencv
+    #pkgs.gtk2-x11 
+    pkgs.rapidjson
+    pkgs.ffmpeg-full
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
