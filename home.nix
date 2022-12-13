@@ -143,7 +143,7 @@ in
     # libpcap requirements
     pkgs.flex
     pkgs.bison
-    pkgs.discord
+    unstable.discord
     pkgs.burpsuite
     pkgs.google-chrome
     pkgs.vscode
