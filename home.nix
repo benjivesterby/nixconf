@@ -179,6 +179,8 @@ in
     #pkgs.gtk2-x11 
     pkgs.rapidjson
     pkgs.ffmpeg-full
+
+    pkgs.etcher
   ];
   
   gtk.iconTheme = pkgs.gnome.gnome-themes-extra;
